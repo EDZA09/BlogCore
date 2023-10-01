@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using BlogCore.Models;
 
 namespace BlogCore.Data
 {
@@ -8,6 +9,8 @@ namespace BlogCore.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            
         }
+        public DbSet<Category> Categories { get; set; }
     }
 }
