@@ -77,12 +77,12 @@ namespace BlogCore.DataAccess.Data.Repository
 
         public void Remove(int id)
         {
-            T entityToRemove = dbSet.Find(id);
+            //T entityToRemove = dbSet.Find(id);
         }
 
         public void Remove(T entity)
         {
-            dbSet.Remove(entity);
+            //dbSet.Remove(entity);
         }
     }
 }
