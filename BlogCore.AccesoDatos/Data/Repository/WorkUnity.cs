@@ -1,4 +1,5 @@
-﻿using BlogCore.DataAccess.Data.Repository.IRepository;
+﻿using BlogCore.Data;
+using BlogCore.DataAccess.Data.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,22 @@ namespace BlogCore.DataAccess.Data.Repository
 {
     public class WorkUnity : IWorkUnity
     {
-        public ICategoryRepository Categoria => throw new NotImplementedException();
+        private readonly ApplicationDbContext _db;
+        public WorkUnity(ApplicationDbContext db)
+        {
+            _db = db;
+            Categoria = new CategoryRepository(_db);
+        }
+        public ICategoryRepository Categoria { get; private set; }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _db.Dispose();
         }
 
         public void save()
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
     }
 }
