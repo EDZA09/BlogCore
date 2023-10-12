@@ -9,11 +9,29 @@ namespace BlogCore.Areas.Admin.Controllers
     {
 
         private readonly IWorkUnity _workcontainer;
-        private readonly ApplicationDbContext _ Context
+        private readonly ApplicationDbContext _context;
+        public CategoriesController(IWorkUnity workcontainer  ,ApplicationDbContext
+            context)
+        {
+            _context = context;
+            _workcontainer = workcontainer;
+        }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+
+
+        #region Lamadas a la Api
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            //opción 1
+            return Json(new { data = _workcontainer.Categoria.GetAll() });
+        }
+
+        #endregion
     }
 }
