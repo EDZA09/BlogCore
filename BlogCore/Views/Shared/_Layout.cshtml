@@ -18,7 +18,8 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <!--
+        <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container">
                 <a class="navbar-brand" asp-area="Client" asp-controller="Home" asp-action="Index">Blog Core</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +42,31 @@
                 </div>
                 <partial name="_LoginPartial" />
             </div>
+        </nav>-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="Client" asp-controller="Home" asp-action="Index">Blog Core</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor04">
+                    <ul class="navbar-nav me-auto">
+      
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Categories" asp-action="Index">Categorías</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Article" asp-action="Index">Artículos</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Sliders" asp-action="Index">Sliders</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">Usuarios</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <partial name="_LoginPartial" />
+            </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
