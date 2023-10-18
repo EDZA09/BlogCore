@@ -11,6 +11,6 @@ namespace BlogCore.DataAccess.Data.Repository.IRepository
         ICategoryRepository Categoria { get; }
         //TODO:: Agregar los demas repositorios
 
-        void save();
+        void Save();
     }
 }
