@@ -43,6 +43,18 @@ namespace BlogCore.Areas.Admin.Controllers
             return View(category);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Category category = new Category();
+            category = _workcontainer.Categoria.Get(id);
+            if(category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
         #region Lamadas a la Api
         [HttpGet]
         public IActionResult GetAll()
