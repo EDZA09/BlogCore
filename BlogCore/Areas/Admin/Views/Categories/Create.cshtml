@@ -12,13 +12,13 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="col-10 offset-1 mt-4">
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-5">
                     <label class="col-4">
                         <label asp-for="Name"></label>
                     </label>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Name" class="form-control" />
+                <div class="col-7">
+                    <input asp-for="Name" class="form-control" placeholder="Ingrese el nombre de la categor&iacute;a"/>
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
@@ -26,13 +26,13 @@
             <br />
 
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-5">
                     <label class="col-4">
                         <label asp-for="Order"></label>
                     </label>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Order" class="form-control" />
+                <div class="col-7">
+                    <input asp-for="Order" class="form-control" placeholder="Ingrese el orden de visualizaci&oacute;n"/>
                     <span asp-validation-for="Order" class="text-danger"></span>
                 </div>
             </div>
