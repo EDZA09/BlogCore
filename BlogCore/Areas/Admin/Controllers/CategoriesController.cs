@@ -23,6 +23,11 @@ namespace BlogCore.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         #region Lamadas a la Api
         [HttpGet]
