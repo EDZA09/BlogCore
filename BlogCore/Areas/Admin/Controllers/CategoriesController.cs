@@ -1,5 +1,6 @@
 ﻿using BlogCore.Data;
 using BlogCore.DataAccess.Data.Repository.IRepository;
+using BlogCore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCore.Areas.Admin.Controllers
@@ -27,6 +28,19 @@ namespace BlogCore.Areas.Admin.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category category)
+        {
+            if(ModelState.IsValid)
+            {
+                _workcontainer.Categoria.Add(category);
+                _workcontainer.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
         }
 
         #region Lamadas a la Api
