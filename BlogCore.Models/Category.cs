@@ -12,7 +12,7 @@ namespace BlogCore.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage="Ingrese un Nombre para la Categoria")]
-        [Display(Name = "Nombre Categoria")]
+        [Display(Name = "Nombre Categoría")]
         public string Name { get; set; }
         [Display(Name = "Orden de Visualización")]
         public int? Order { get; set; }
