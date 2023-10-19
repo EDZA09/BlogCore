@@ -76,6 +76,21 @@ namespace BlogCore.Areas.Admin.Controllers
             return Json(new { data = _workcontainer.Categoria.GetAll() });
         }
 
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            var objFromDb = _workcontainer.Categoria.Get(id);
+            if(objFromDb == null)
+            {
+                return Json(new { success = false, message = "Error al borrar la Categoria"});
+
+            }
+
+            _workcontainer.Categoria.Remove(objFromDb);
+            _workcontainer.Save();
+            return Json(new {success = true, message="Categoría borrada correctamente"});
+        }
+
         #endregion
     }
 }
