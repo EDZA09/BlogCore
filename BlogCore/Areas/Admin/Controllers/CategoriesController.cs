@@ -55,6 +55,19 @@ namespace BlogCore.Areas.Admin.Controllers
             return View(category);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _workcontainer.Categoria.Update(category);
+                _workcontainer.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
+        }
+
         #region Lamadas a la Api
         [HttpGet]
         public IActionResult GetAll()
