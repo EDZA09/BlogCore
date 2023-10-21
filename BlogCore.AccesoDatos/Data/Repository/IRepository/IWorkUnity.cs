@@ -10,6 +10,7 @@ namespace BlogCore.DataAccess.Data.Repository.IRepository
     {
         ICategoryRepository Categoria { get; }
         //TODO:: Agregar los demas repositorios
+        IArticleRepository Articulo { get; }
 
         void Save();
     }
