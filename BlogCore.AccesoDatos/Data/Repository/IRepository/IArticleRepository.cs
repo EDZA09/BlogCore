@@ -8,11 +8,10 @@ using System.Web.Mvc;
 
 namespace BlogCore.DataAccess.Data.Repository.IRepository
 {
-    public interface ICategoryRepository : IRepository<Category>
+    public interface IArticleRepository : IRepository<Article>
     {
-        IEnumerable<SelectListItem>  GetListCategories();
 
-        void Update(Category category);
+        void Update(Article article);
 
     }
 }
