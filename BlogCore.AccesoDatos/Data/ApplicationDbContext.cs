@@ -12,5 +12,6 @@ namespace BlogCore.Data
             
         }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Article> Articles { get; set; }
     }
 }
