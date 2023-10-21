@@ -15,8 +15,10 @@ namespace BlogCore.DataAccess.Data.Repository
         {
             _db = db;
             Categoria = new CategoryRepository(_db);
+            Articulo = new ArticleRepository(_db);
         }
         public ICategoryRepository Categoria { get; private set; }
+        public IArticleRepository Articulo { get; private set; }
 
         public void Dispose()
         {
