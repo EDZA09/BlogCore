@@ -18,6 +18,7 @@ namespace BlogCore.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "La descripción es obligatoria")]
+        [Display(Name = "Descripción")]
         public string Description { get; set; }
 
         [Display(Name = "Fecha de Creación")]
