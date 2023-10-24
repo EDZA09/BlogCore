@@ -1,5 +1,6 @@
 ﻿using BlogCore.Data;
 using BlogCore.DataAccess.Data.Repository.IRepository;
+using BlogCore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCore.Areas.Admin.Controllers
@@ -16,10 +17,23 @@ namespace BlogCore.Areas.Admin.Controllers
             _workUnity = workUnity;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        /*[HttpPost]
+        public IActionResult Create(Article article)
+        {
+            return View(article);
+        }*/
 
         #region Lamadas a la Api
         [HttpGet]
