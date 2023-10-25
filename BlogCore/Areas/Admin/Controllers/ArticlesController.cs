@@ -1,7 +1,9 @@
 ﻿using BlogCore.Data;
 using BlogCore.DataAccess.Data.Repository.IRepository;
 using BlogCore.Models;
+using BlogCore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BlogCore.Areas.Admin.Controllers
 {
@@ -26,7 +28,12 @@ namespace BlogCore.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            ArticleVM articleVM = new ArticleVM()
+            {
+                article = new BlogCore.Models.Article(),
+                ListaCategorias = _workUnity.Categoria.GetListCategories()
+        };
+            return View(articleVM);
         }
 
         /*[HttpPost]
