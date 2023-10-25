@@ -30,7 +30,7 @@ namespace BlogCore.Areas.Admin.Controllers
         {
             ArticleVM articleVM = new ArticleVM()
             {
-                article = new BlogCore.Models.Article(),
+                Article = new BlogCore.Models.Article(),
                 ListaCategorias = _workUnity.Categoria.GetListCategories()
         };
             return View(articleVM);

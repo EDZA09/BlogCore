@@ -9,7 +9,7 @@ namespace BlogCore.Models.ViewModels
 {
     public class ArticleVM
     {
-        public Article article {  get; set; }
+        public Article Article {  get; set; }
         public IEnumerable<SelectListItem> ListaCategorias {  get; set; }
     }
 }
