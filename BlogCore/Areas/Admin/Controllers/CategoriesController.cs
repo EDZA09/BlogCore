@@ -1,6 +1,7 @@
 ﻿using BlogCore.Data;
 using BlogCore.DataAccess.Data.Repository.IRepository;
 using BlogCore.Models;
+using BlogCore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCore.Areas.Admin.Controllers
@@ -10,12 +11,12 @@ namespace BlogCore.Areas.Admin.Controllers
     {
 
         private readonly IWorkUnity _workcontainer;
-        private readonly ApplicationDbContext _context;
-        public CategoriesController(IWorkUnity workcontainer  ,ApplicationDbContext
-            context)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+
+        public CategoriesController(IWorkUnity workcontainer, IWebHostEnvironment webHostEnvironment)
         {
-            _context = context;
             _workcontainer = workcontainer;
+            _hostingEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -32,40 +33,12 @@ namespace BlogCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category category)
+        public IActionResult Create(ArticleVM articleVM)
         {
             if(ModelState.IsValid)
             {
-                _workcontainer.Categoria.Add(category);
-                _workcontainer.Save();
-                return RedirectToAction(nameof(Index));
+                string rutaPrincipal = _hostingEnvironment.WebRootPath;
             }
-            return View(category);
-        }
-
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            Category category = new Category();
-            category = _workcontainer.Categoria.Get(id);
-            if(category == null)
-            {
-                return NotFound();
-            }
-            return View(category);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category category)
-        {
-            if (ModelState.IsValid)
-            {
-                _workcontainer.Categoria.Update(category);
-                _workcontainer.Save();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
         }
 
         #region Lamadas a la Api
