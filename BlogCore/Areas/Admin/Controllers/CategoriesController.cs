@@ -37,8 +37,27 @@ namespace BlogCore.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
-                string rutaPrincipal = _hostingEnvironment.WebRootPath;
+                string root = _hostingEnvironment.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+
+                if (articleVM.Article.Id == 0)
+                {
+                    // Nuevo Artículo
+                    string fileName = Guid.NewGuid().ToString();
+                    // ruta principal = wwwroot
+                    // wwwroot/images/articles
+                    var uploads = Path.Combine(root, @"images/articles");
+                    var extensions = Path.GetExtension(files[0].FileName);
+
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extensions), FileMode.Create))
+                    {
+                        files[0].CopyTo(fileStreams);
+                    }
+
+
+                }
             }
+
         }
 
         #region Lamadas a la Api
