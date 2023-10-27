@@ -37,7 +37,7 @@ namespace BlogCore.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
-                string root = _hostingEnvironment.WebRootPath;
+                string mainRoot = _hostingEnvironment.WebRootPath;
                 var files = HttpContext.Request.Form.Files;
 
                 if (articleVM.Article.Id == 0)
@@ -46,7 +46,7 @@ namespace BlogCore.Areas.Admin.Controllers
                     string fileName = Guid.NewGuid().ToString();
                     // ruta principal = wwwroot
                     // wwwroot/images/articles
-                    var uploads = Path.Combine(root, @"images/articles");
+                    var uploads = Path.Combine(mainRoot, @"images/articles");
                     var extensions = Path.GetExtension(files[0].FileName);
 
                     using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extensions), FileMode.Create))
@@ -54,10 +54,16 @@ namespace BlogCore.Areas.Admin.Controllers
                         files[0].CopyTo(fileStreams);
                     }
 
+                    _workcontainer.Articulo.Add(articleVM.Article);
+                    _workcontainer.Save();
 
+                    return RedirectToAction(nameof(Index));
                 }
             }
 
+            articleVM.ListaCategorias = _workcontainer.Categoria.GetListCategories();
+
+            return View(articleVM);
         }
 
         #region Lamadas a la Api
